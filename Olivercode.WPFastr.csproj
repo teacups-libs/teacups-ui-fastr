@@ -8,6 +8,8 @@
     <AssemblyName>Olivercode.WPFastr</AssemblyName>
     <PackageId>Olivercode.WPFastr</PackageId>
     <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>$(MSBuildProjectDirectory)\artifacts\packages</PackageOutputPath>
     <Authors>Oliver</Authors>
     <Description>Small WPF helper controls and collections.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
