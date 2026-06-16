@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Olivercode.WPFastr</RootNamespace>
+    <AssemblyName>Olivercode.WPFastr</AssemblyName>
+    <PackageId>Olivercode.WPFastr</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Oliver</Authors>
+    <Description>Small WPF helper controls and collections.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+</Project>
