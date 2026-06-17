@@ -91,7 +91,7 @@
         <TabControl Background="#F5F7FA"
                     BorderThickness="0"
                     Padding="0">
-            <TabItem Header="WPFastr BufferedListBox"
+            <TabItem Header="WPFastr BufferedItems"
                      DataContext="{Binding BufferedBrowser}">
                 <Grid Background="#F5F7FA">
                     <Grid.ColumnDefinitions>
@@ -132,15 +132,15 @@
                             </Grid>
                         </Border>
 
-                        <controls:BufferedListBox ItemsSource="{Binding CurrentFiles}"
-                                                  Background="Transparent"
-                                                  BorderThickness="0"
-                                                  Padding="12"
-                                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                  ItemsPanel="{StaticResource FileItemsPanel}"
-                                                  ItemContainerStyle="{StaticResource FileItemContainerStyle}"
-                                                  ItemTemplate="{StaticResource FileItemTemplate}" />
+                        <ListBox controls:BufferedItems.Source="{Binding CurrentFiles}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Padding="12"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ItemsPanel="{StaticResource FileItemsPanel}"
+                                 ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                                 ItemTemplate="{StaticResource FileItemTemplate}" />
                     </DockPanel>
                 </Grid>
             </TabItem>
