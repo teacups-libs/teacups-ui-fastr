@@ -1,0 +1,133 @@
+<Window x:Class="WPFastr.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:Olivercode.WPFastr.Controls;assembly=Olivercode.WPFastr"
+        mc:Ignorable="d"
+        Title="WPFastr Demo"
+        Height="720"
+        MinHeight="480"
+        MinWidth="820"
+        Width="1120">
+    <Grid Background="#F5F7FA">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Background="White"
+                BorderBrush="#D5DCE5"
+                BorderThickness="0,0,1,0">
+            <ListBox x:Name="FolderList"
+                     ItemsSource="{Binding Folders}"
+                     SelectionChanged="FolderList_OnSelectionChanged"
+                     BorderThickness="0"
+                     FontSize="14"
+                     Padding="8"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto" />
+        </Border>
+
+        <DockPanel Grid.Column="1">
+            <Border DockPanel.Dock="Top"
+                    Background="White"
+                    BorderBrush="#D5DCE5"
+                    BorderThickness="0,0,0,1"
+                    Padding="16,12">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding CurrentFolder}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center" />
+
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding StatusText}"
+                               Foreground="#4B5563"
+                               VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <controls:BufferedListBox ItemsSource="{Binding CurrentFiles}"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      Padding="12"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Width" Value="180" />
+                        <Setter Property="Height" Value="112" />
+                        <Setter Property="Margin" Value="4" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White"
+                                BorderBrush="#D5DCE5"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Padding="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Border Width="42"
+                                        Height="34"
+                                        Background="#E8F1FF"
+                                        BorderBrush="#BCD3F5"
+                                        BorderThickness="1"
+                                        CornerRadius="4"
+                                        HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding Extension}"
+                                               Foreground="#1F4D8F"
+                                               FontSize="11"
+                                               FontWeight="SemiBold"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center" />
+                                </Border>
+
+                                <TextBlock Grid.Row="1"
+                                           Text="{Binding Name}"
+                                           FontWeight="SemiBold"
+                                           TextWrapping="Wrap"
+                                           TextTrimming="CharacterEllipsis"
+                                           Margin="0,8,0,6" />
+
+                                <StackPanel Grid.Row="2"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="{Binding SizeText}"
+                                               Foreground="#6B7280"
+                                               FontSize="12" />
+                                    <TextBlock Text="  "
+                                               FontSize="12" />
+                                    <TextBlock Text="{Binding ModifiedText}"
+                                               Foreground="#6B7280"
+                                               FontSize="12" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </controls:BufferedListBox>
+        </DockPanel>
+    </Grid>
+</Window>

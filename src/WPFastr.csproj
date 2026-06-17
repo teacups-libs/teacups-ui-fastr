@@ -13,4 +13,12 @@
     <Description>Small WPF helper controls and collections.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Remove="WPFastr.Demo\**" />
+    <Compile Remove="WPFastr.Demo\**" />
+    <EmbeddedResource Remove="WPFastr.Demo\**" />
+    <None Remove="WPFastr.Demo\**" />
+    <Page Remove="WPFastr.Demo\**" />
+  </ItemGroup>
 </Project>
