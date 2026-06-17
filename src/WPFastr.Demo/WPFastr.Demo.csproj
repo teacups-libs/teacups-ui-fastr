@@ -4,6 +4,10 @@
     <ProjectReference Include="..\WPFastr.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="VirtualizingWrapPanel" Version="2.5.1" />
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Olivercode.WPFastr.Controls;assembly=Olivercode.WPFastr"
+        xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
         mc:Ignorable="d"
         Title="WPFastr Demo"
         Height="720"
@@ -20,6 +21,10 @@
 
         <ItemsPanelTemplate x:Key="FileItemsPanel">
             <WrapPanel IsItemsHost="True" />
+        </ItemsPanelTemplate>
+
+        <ItemsPanelTemplate x:Key="VirtualizingFileItemsPanel">
+            <vwp:VirtualizingWrapPanel />
         </ItemsPanelTemplate>
 
         <Style x:Key="FileItemContainerStyle" TargetType="ListBoxItem">
@@ -82,115 +87,217 @@
         </DataTemplate>
     </Window.Resources>
 
-    <TabControl Background="#F5F7FA"
-                BorderThickness="0"
-                Padding="0">
-        <TabItem Header="WPFastr BufferedListBox"
-                 DataContext="{Binding BufferedBrowser}">
-            <Grid Background="#F5F7FA">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+    <Grid>
+        <TabControl Background="#F5F7FA"
+                    BorderThickness="0"
+                    Padding="0">
+            <TabItem Header="WPFastr BufferedListBox"
+                     DataContext="{Binding BufferedBrowser}">
+                <Grid Background="#F5F7FA">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0"
-                        Background="White"
-                        BorderBrush="#D5DCE5"
-                        BorderThickness="0,0,1,0">
-                    <ListBox ItemsSource="{Binding Folders}"
-                             SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
-                             Style="{StaticResource FolderListStyle}" />
-                </Border>
-
-                <DockPanel Grid.Column="1">
-                    <Border DockPanel.Dock="Top"
+                    <Border Grid.Column="0"
                             Background="White"
                             BorderBrush="#D5DCE5"
-                            BorderThickness="0,0,0,1"
-                            Padding="16,12">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Text="{Binding CurrentFolder}"
-                                       FontSize="18"
-                                       FontWeight="SemiBold"
-                                       VerticalAlignment="Center" />
-
-                            <TextBlock Grid.Column="1"
-                                       Text="{Binding StatusText}"
-                                       Foreground="#4B5563"
-                                       VerticalAlignment="Center" />
-                        </Grid>
+                            BorderThickness="0,0,1,0">
+                        <ListBox ItemsSource="{Binding Folders}"
+                                 SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
+                                 Style="{StaticResource FolderListStyle}" />
                     </Border>
 
-                    <controls:BufferedListBox ItemsSource="{Binding CurrentFiles}"
-                                              Background="Transparent"
-                                              BorderThickness="0"
-                                              Padding="12"
-                                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                              ItemsPanel="{StaticResource FileItemsPanel}"
-                                              ItemContainerStyle="{StaticResource FileItemContainerStyle}"
-                                              ItemTemplate="{StaticResource FileItemTemplate}" />
-                </DockPanel>
-            </Grid>
-        </TabItem>
+                    <DockPanel Grid.Column="1">
+                        <Border DockPanel.Dock="Top"
+                                Background="White"
+                                BorderBrush="#D5DCE5"
+                                BorderThickness="0,0,0,1"
+                                Padding="16,12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-        <TabItem Header="Standard ListBox"
-                 DataContext="{Binding StandardBrowser}">
-            <Grid Background="#F5F7FA">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding CurrentFolder}"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           VerticalAlignment="Center" />
 
-                <Border Grid.Column="0"
-                        Background="White"
-                        BorderBrush="#D5DCE5"
-                        BorderThickness="0,0,1,0">
-                    <ListBox ItemsSource="{Binding Folders}"
-                             SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
-                             Style="{StaticResource FolderListStyle}" />
-                </Border>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding StatusText}"
+                                           Foreground="#4B5563"
+                                           VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
 
-                <DockPanel Grid.Column="1">
-                    <Border DockPanel.Dock="Top"
+                        <controls:BufferedListBox ItemsSource="{Binding CurrentFiles}"
+                                                  Background="Transparent"
+                                                  BorderThickness="0"
+                                                  Padding="12"
+                                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                  ItemsPanel="{StaticResource FileItemsPanel}"
+                                                  ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                                                  ItemTemplate="{StaticResource FileItemTemplate}" />
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Standard ListBox"
+                     DataContext="{Binding StandardBrowser}">
+                <Grid Background="#F5F7FA">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0"
                             Background="White"
                             BorderBrush="#D5DCE5"
-                            BorderThickness="0,0,0,1"
-                            Padding="16,12">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Text="{Binding CurrentFolder}"
-                                       FontSize="18"
-                                       FontWeight="SemiBold"
-                                       VerticalAlignment="Center" />
-
-                            <TextBlock Grid.Column="1"
-                                       Text="{Binding StatusText}"
-                                       Foreground="#4B5563"
-                                       VerticalAlignment="Center" />
-                        </Grid>
+                            BorderThickness="0,0,1,0">
+                        <ListBox ItemsSource="{Binding Folders}"
+                                 SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
+                                 Style="{StaticResource FolderListStyle}" />
                     </Border>
 
-                    <ListBox ItemsSource="{Binding CurrentFiles}"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Padding="12"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto"
-                             ItemsPanel="{StaticResource FileItemsPanel}"
-                             ItemContainerStyle="{StaticResource FileItemContainerStyle}"
-                             ItemTemplate="{StaticResource FileItemTemplate}" />
-                </DockPanel>
-            </Grid>
-        </TabItem>
-    </TabControl>
+                    <DockPanel Grid.Column="1">
+                        <Border DockPanel.Dock="Top"
+                                Background="White"
+                                BorderBrush="#D5DCE5"
+                                BorderThickness="0,0,0,1"
+                                Padding="16,12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding CurrentFolder}"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           VerticalAlignment="Center" />
+
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding StatusText}"
+                                           Foreground="#4B5563"
+                                           VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+
+                        <ListBox ItemsSource="{Binding CurrentFiles}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Padding="12"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ItemsPanel="{StaticResource FileItemsPanel}"
+                                 ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                                 ItemTemplate="{StaticResource FileItemTemplate}" />
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Standard ListBox + VirtualizingWrapPanel"
+                     DataContext="{Binding VirtualizedBrowser}">
+                <Grid Background="#F5F7FA">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0"
+                            Background="White"
+                            BorderBrush="#D5DCE5"
+                            BorderThickness="0,0,1,0">
+                        <ListBox ItemsSource="{Binding Folders}"
+                                 SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
+                                 Style="{StaticResource FolderListStyle}" />
+                    </Border>
+
+                    <DockPanel Grid.Column="1">
+                        <Border DockPanel.Dock="Top"
+                                Background="White"
+                                BorderBrush="#D5DCE5"
+                                BorderThickness="0,0,0,1"
+                                Padding="16,12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding CurrentFolder}"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           VerticalAlignment="Center" />
+
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding StatusText}"
+                                           Foreground="#4B5563"
+                                           VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+
+                        <ListBox ItemsSource="{Binding CurrentFiles}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Padding="12"
+                                 ScrollViewer.CanContentScroll="True"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 VirtualizingPanel.IsVirtualizing="True"
+                                 VirtualizingPanel.VirtualizationMode="Recycling"
+                                 ItemsPanel="{StaticResource VirtualizingFileItemsPanel}"
+                                 ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                                 ItemTemplate="{StaticResource FileItemTemplate}" />
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Grid Width="220"
+              Height="220"
+              Margin="0,0,28,28"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Bottom"
+              IsHitTestVisible="False">
+            <Ellipse Width="140"
+                     Height="140"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     RenderTransformOrigin="0.5,0.5">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="HotPink" />
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <ScaleTransform ScaleX="0.72" ScaleY="0.72" />
+                </Ellipse.RenderTransform>
+                <Ellipse.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever">
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                 From="0.72"
+                                                 To="1.42"
+                                                 Duration="0:0:1.6"
+                                                 AutoReverse="True" />
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                 From="0.72"
+                                                 To="1.42"
+                                                 Duration="0:0:1.6"
+                                                 AutoReverse="True" />
+                                <ColorAnimation Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                From="HotPink"
+                                                To="SlateBlue"
+                                                Duration="0:0:1.6"
+                                                AutoReverse="True" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Ellipse.Triggers>
+            </Ellipse>
+        </Grid>
+    </Grid>
 </Window>
