@@ -48,7 +48,8 @@ public static class DemoFileGenerator
                 $"{namePart} {folderNumber}-{i:000}.{extension}",
                 extension.ToUpperInvariant(),
                 FormatSize(size),
-                modified.ToString("MMM d")));
+                modified.ToString("MMM d"),
+                $"https://picsum.photos/seed/wpfastr-{folderNumber}-{i}/320/180"));
         }
 
         return files;
