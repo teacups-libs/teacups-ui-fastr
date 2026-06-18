@@ -142,6 +142,7 @@
                         </Border>
 
                         <ListBox controls:BufferedItems.Source="{Binding CurrentFiles}"
+                                 controls:ItemsControlScroll.ResetOnItemsReset="True"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  Padding="12"
@@ -196,6 +197,7 @@
                         </Border>
 
                         <ListBox ItemsSource="{Binding CurrentFiles}"
+                                 controls:ItemsControlScroll.ResetOnItemsReset="True"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  Padding="12"
@@ -250,6 +252,7 @@
                         </Border>
 
                         <ListBox ItemsSource="{Binding CurrentFiles}"
+                                 controls:ItemsControlScroll.ResetOnItemsReset="True"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  Padding="12"
