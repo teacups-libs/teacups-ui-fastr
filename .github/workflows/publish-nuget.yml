@@ -1,0 +1,43 @@
+name: Publish NuGet
+
+on:
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - closed
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out merged commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore
+        run: dotnet restore src/WPFastr.csproj
+
+      - name: Pack
+        run: dotnet pack src/WPFastr.csproj --configuration Release --no-restore --output artifacts -p:Version=1.0.${{ github.run_number }}
+
+      - name: Retain package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Olivercode.WPFastr.1.0.${{ github.run_number }}
+          path: artifacts/*.nupkg
+
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push "artifacts/*.nupkg" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}" --skip-duplicate

@@ -11,6 +11,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Oliver</Authors>
     <Description>Small WPF behaviors and collections.</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/oli-g-sk/Olivercode.WPFastr</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
