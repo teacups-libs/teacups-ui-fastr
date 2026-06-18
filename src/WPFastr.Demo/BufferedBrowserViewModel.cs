@@ -1,5 +1,5 @@
 using System.Windows.Threading;
-using Olivercode.WPFastr;
+using Olivercode.WPFastr.Collections;
 
 namespace WPFastr.Demo;
 

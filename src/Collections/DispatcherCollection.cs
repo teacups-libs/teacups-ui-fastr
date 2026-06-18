@@ -1,12 +1,7 @@
 using System.Collections.ObjectModel;
-using Olivercode.WPFastr.Services;
+using Olivercode.WPFastr.Threading;
 
-namespace Olivercode.WPFastr;
-
-public interface INotifyCollectionReplacement
-{
-    event EventHandler? ReplacementStarting;
-}
+namespace Olivercode.WPFastr.Collections;
 
 // TODO move to a standalone library
 // TODO allow adjusting of priority

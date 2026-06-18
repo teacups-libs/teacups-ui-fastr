@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:Olivercode.WPFastr.Controls;assembly=Olivercode.WPFastr"
+        xmlns:behaviors="clr-namespace:Olivercode.WPFastr.Behaviors;assembly=Olivercode.WPFastr"
         xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
         mc:Ignorable="d"
         Title="WPFastr Demo"
@@ -141,8 +141,8 @@
                             </Grid>
                         </Border>
 
-                        <ListBox controls:BufferedItems.Source="{Binding CurrentFiles}"
-                                 controls:ItemsControlScroll.ResetOnItemsReset="True"
+                        <ListBox behaviors:BufferedItems.Source="{Binding CurrentFiles}"
+                                 behaviors:ItemsControlScroll.ResetOnItemsReset="True"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  Padding="12"
@@ -197,7 +197,7 @@
                         </Border>
 
                         <ListBox ItemsSource="{Binding CurrentFiles}"
-                                 controls:ItemsControlScroll.ResetOnItemsReset="True"
+                                 behaviors:ItemsControlScroll.ResetOnItemsReset="True"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  Padding="12"
@@ -252,7 +252,7 @@
                         </Border>
 
                         <ListBox ItemsSource="{Binding CurrentFiles}"
-                                 controls:ItemsControlScroll.ResetOnItemsReset="True"
+                                 behaviors:ItemsControlScroll.ResetOnItemsReset="True"
                                  Background="Transparent"
                                  BorderThickness="0"
                                  Padding="12"

@@ -4,8 +4,9 @@ using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using Olivercode.WPFastr.Collections;
 
-namespace Olivercode.WPFastr.Controls;
+namespace Olivercode.WPFastr.Behaviors;
 
 public static class BufferedItems
 {

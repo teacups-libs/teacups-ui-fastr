@@ -10,7 +10,7 @@
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Oliver</Authors>
-    <Description>Small WPF helper controls and collections.</Description>
+    <Description>Small WPF behaviors and collections.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
