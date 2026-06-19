@@ -46,7 +46,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
             {
                 if (IsCurrent(updateVersion))
                     Add(item);
-            }, IDispatcherService.BackgroundPriority);
+            }, DispatchPriority.Background);
         }
     }
 
@@ -90,7 +90,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
 
                 RemoveAt(0);
                 removedItem = true;
-            }, IDispatcherService.BackgroundPriority);
+            }, DispatchPriority.Background);
 
             if (!removedItem)
                 break;
@@ -105,7 +105,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
         {
             if (IsCurrent(updateVersion))
                 count = Count;
-        }, IDispatcherService.BackgroundPriority);
+        }, DispatchPriority.Background);
 
         return count;
     }
@@ -122,7 +122,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
         {
             if (IsCurrent(updateVersion) && Count > 0)
                 RemoveAt(0);
-        }, IDispatcherService.BackgroundPriority);
+        }, DispatchPriority.Background);
     }
 
     private IDisposable BeginBusyScope()

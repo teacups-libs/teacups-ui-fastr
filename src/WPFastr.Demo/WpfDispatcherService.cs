@@ -12,8 +12,18 @@ public sealed class WpfDispatcherService : IDispatcherService
         this.dispatcher = dispatcher;
     }
 
-    public Task InvokeAsync(Action action, DispatcherPriority priority)
+    public Task InvokeAsync(Action action, DispatchPriority priority = DispatchPriority.Normal)
     {
-        return dispatcher.InvokeAsync(action, priority).Task;
+        return dispatcher.InvokeAsync(action, MapPriority(priority)).Task;
+    }
+
+    private static DispatcherPriority MapPriority(DispatchPriority priority)
+    {
+        return priority switch
+        {
+            DispatchPriority.Background => DispatcherPriority.Background,
+            DispatchPriority.Idle => DispatcherPriority.ApplicationIdle,
+            _ => DispatcherPriority.Normal
+        };
     }
 }

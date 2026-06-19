@@ -1,10 +1,13 @@
-using System.Windows.Threading;
-
 namespace Olicode.WPFastr.Threading;
+
+public enum DispatchPriority
+{
+    Normal,
+    Background,
+    Idle
+}
 
 public interface IDispatcherService
 {
-    const DispatcherPriority BackgroundPriority = DispatcherPriority.Background;
-
-    Task InvokeAsync(Action action, DispatcherPriority priority);
+    Task InvokeAsync(Action action, DispatchPriority priority = DispatchPriority.Normal);
 }
