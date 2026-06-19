@@ -28,10 +28,10 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Restore
-        run: dotnet restore src/WPFastr.csproj
+        run: dotnet restore src/WPFastr/WPFastr.csproj
 
       - name: Pack
-        run: dotnet pack src/WPFastr.csproj --configuration Release --no-restore --output artifacts -p:Version=1.0.${{ github.run_number }}
+        run: dotnet pack src/WPFastr/WPFastr.csproj --configuration Release --no-restore --output artifacts -p:Version=1.0.${{ github.run_number }}
 
       - name: Retain package artifact
         uses: actions/upload-artifact@v4
