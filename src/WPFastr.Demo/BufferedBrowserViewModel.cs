@@ -1,5 +1,6 @@
 using System.Windows.Threading;
 using Olicode.WPFastr.Collections;
+using Olicode.WPFastr.Windows.Threading;
 
 namespace Olicode.WPFastr.Demo;
 

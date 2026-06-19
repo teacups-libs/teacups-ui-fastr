@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 using Olicode.WPFastr.Controls;
-using Olicode.WPFastr.Threading;
+using Olicode.WPFastr.Windows.Controls;
+using Olicode.WPFastr.Windows.Threading;
 
-namespace Olicode.WPFastr.Behaviors;
+namespace Olicode.WPFastr.Windows.Behaviors;
 
 public static class BufferedItems
 {
@@ -88,47 +88,6 @@ public static class BufferedItems
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             SetSource(GetSource(itemsControl));
-        }
-    }
-
-    private sealed class WpfItemsControlAdapter : IItemsControlAdapter
-    {
-        private readonly ItemsControl itemsControl;
-
-        public WpfItemsControlAdapter(ItemsControl itemsControl)
-        {
-            this.itemsControl = itemsControl;
-        }
-
-        public IEnumerable? ItemsSource
-        {
-            get => itemsControl.ItemsSource;
-            set => itemsControl.ItemsSource = value;
-        }
-    }
-
-    private sealed class WpfDispatcherService : IDispatcherService
-    {
-        private readonly Dispatcher dispatcher;
-
-        public WpfDispatcherService(Dispatcher dispatcher)
-        {
-            this.dispatcher = dispatcher;
-        }
-
-        public Task InvokeAsync(Action action, DispatchPriority priority = DispatchPriority.Normal)
-        {
-            return dispatcher.InvokeAsync(action, MapPriority(priority)).Task;
-        }
-
-        private static DispatcherPriority MapPriority(DispatchPriority priority)
-        {
-            return priority switch
-            {
-                DispatchPriority.Background => DispatcherPriority.Background,
-                DispatchPriority.Idle => DispatcherPriority.ApplicationIdle,
-                _ => DispatcherPriority.Normal
-            };
         }
     }
 }

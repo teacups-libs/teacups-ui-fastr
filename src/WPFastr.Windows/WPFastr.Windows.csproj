@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Olicode.WPFastr.Windows</RootNamespace>
+    <AssemblyName>Olicode.WPFastr.Windows</AssemblyName>
+    <PackageId>Olivercode.WPFastr.Windows</PackageId>
+    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Oliver</Authors>
+    <Description>WPF adapters and behaviors for Olivercode.WPFastr.</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/oli-g-sk/Olivercode.WPFastr</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WPFastr\WPFastr.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

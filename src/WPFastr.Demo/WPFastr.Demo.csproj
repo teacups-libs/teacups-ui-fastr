@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WPFastr\WPFastr.csproj" />
+    <ProjectReference Include="..\WPFastr.Windows\WPFastr.Windows.csproj" />
   </ItemGroup>
 
   <ItemGroup>

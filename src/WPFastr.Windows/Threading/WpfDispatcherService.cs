@@ -1,7 +1,7 @@
 using System.Windows.Threading;
 using Olicode.WPFastr.Threading;
 
-namespace Olicode.WPFastr.Demo;
+namespace Olicode.WPFastr.Windows.Threading;
 
 public sealed class WpfDispatcherService : IDispatcherService
 {
