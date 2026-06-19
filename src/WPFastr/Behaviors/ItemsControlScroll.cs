@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Olivercode.WPFastr.Behaviors;
+namespace Olicode.WPFastr.Behaviors;
 
 public static class ItemsControlScroll
 {

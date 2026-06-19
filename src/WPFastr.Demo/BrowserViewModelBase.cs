@@ -2,7 +2,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace WPFastr.Demo;
+namespace Olicode.WPFastr.Demo;
 
 public abstract class BrowserViewModelBase : INotifyPropertyChanged
 {

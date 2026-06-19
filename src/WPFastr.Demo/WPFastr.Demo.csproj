@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\WPFastr.csproj" />
+    <ProjectReference Include="..\WPFastr\WPFastr.csproj" />
   </ItemGroup>
 
   <ItemGroup>

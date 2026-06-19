@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFastr", "WPFastr.csproj", "{7968AF93-6EDF-45CE-9789-05F13F512F3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFastr", "WPFastr\WPFastr.csproj", "{7968AF93-6EDF-45CE-9789-05F13F512F3F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFastr.Demo", "WPFastr.Demo\WPFastr.Demo.csproj", "{3A3B6294-9956-4EB8-A86E-B7D66895EE49}"
 EndProject
