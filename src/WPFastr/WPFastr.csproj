@@ -7,7 +7,7 @@
     <RootNamespace>Olicode.WPFastr</RootNamespace>
     <AssemblyName>Olicode.WPFastr</AssemblyName>
     <PackageId>Olivercode.WPFastr</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Oliver</Authors>
     <Description>Small WPF behaviors and collections.</Description>
