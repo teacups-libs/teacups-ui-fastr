@@ -1,4 +1,4 @@
-namespace Olivercode.WPFastr.Collections;
+namespace Olicode.WPFastr.Collections;
 
 public interface INotifyCollectionReplacement
 {

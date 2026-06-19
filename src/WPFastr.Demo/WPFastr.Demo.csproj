@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\WPFastr.csproj" />
+    <ProjectReference Include="..\WPFastr\WPFastr.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +14,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <AssemblyName>Olicode.WPFastr.Demo</AssemblyName>
+    <RootNamespace>Olicode.WPFastr.Demo</RootNamespace>
   </PropertyGroup>
 
 </Project>

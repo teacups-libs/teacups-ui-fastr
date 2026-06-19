@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace WPFastr.Demo;
+namespace Olicode.WPFastr.Demo;
 
 public partial class MainWindow : Window
 {

@@ -1,4 +1,4 @@
-namespace WPFastr.Demo;
+namespace Olicode.WPFastr.Demo;
 
 public sealed record FileItem(
     string Name,

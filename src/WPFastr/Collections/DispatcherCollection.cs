@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
-using Olivercode.WPFastr.Threading;
+using Olicode.WPFastr.Threading;
 
-namespace Olivercode.WPFastr.Collections;
+namespace Olicode.WPFastr.Collections;
 
 // TODO move to a standalone library
 // TODO allow adjusting of priority

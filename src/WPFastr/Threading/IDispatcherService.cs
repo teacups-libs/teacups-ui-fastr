@@ -1,6 +1,6 @@
 using System.Windows.Threading;
 
-namespace Olivercode.WPFastr.Threading;
+namespace Olicode.WPFastr.Threading;
 
 public interface IDispatcherService
 {
