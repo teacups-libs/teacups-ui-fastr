@@ -9,7 +9,7 @@
     <Version>1.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Oliver</Authors>
-    <Description>Small WPF behaviors and collections.</Description>
+    <Description>Cross-platform dispatcher collections and buffered items control abstractions.</Description>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/oli-g-sk/Olivercode.WPFastr</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>

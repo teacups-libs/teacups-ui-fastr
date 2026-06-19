@@ -28,13 +28,16 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Restore
-        run: dotnet restore src/WPFastr/WPFastr.csproj
+        run: dotnet restore src/WPFastr.Windows/WPFastr.Windows.csproj
 
       - name: Build
-        run: dotnet build src/WPFastr/WPFastr.csproj --configuration Release --no-restore -p:GeneratePackageOnBuild=false -p:Version=1.0.${{ github.run_number }}
+        run: dotnet build src/WPFastr.Windows/WPFastr.Windows.csproj --configuration Release --no-restore -p:GeneratePackageOnBuild=false -p:Version=1.0.${{ github.run_number }}
 
-      - name: Pack
+      - name: Pack cross-platform library
         run: dotnet pack src/WPFastr/WPFastr.csproj --configuration Release --no-build --no-restore --output publish -p:Version=1.0.${{ github.run_number }}
+
+      - name: Pack Windows library
+        run: dotnet pack src/WPFastr.Windows/WPFastr.Windows.csproj --configuration Release --no-build --no-restore --output publish -p:Version=1.0.${{ github.run_number }}
 
       - name: Retain package artifact
         uses: actions/upload-artifact@v4
@@ -44,3 +47,6 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: dotnet nuget push "publish/Olivercode.WPFastr.1.0.${{ github.run_number }}.nupkg" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}" --skip-duplicate
+
+      - name: Publish Windows package to GitHub Packages
+        run: dotnet nuget push "publish/Olivercode.WPFastr.Windows.1.0.${{ github.run_number }}.nupkg" --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}" --skip-duplicate
