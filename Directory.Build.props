@@ -2,6 +2,6 @@
   <PropertyGroup>
     <BaseOutputPath>$(MSBuildThisFileDirectory)build\bin\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)build\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts\</PackageOutputPath>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)publish\</PackageOutputPath>
   </PropertyGroup>
 </Project>
