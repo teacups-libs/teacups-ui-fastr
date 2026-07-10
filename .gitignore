@@ -17,6 +17,9 @@ packages/
 .nuget/packages/
 project.assets.json
 
+## Solution files (using .slnx format)
+*.sln
+
 ## Rider / ReSharper
 .idea/
 *.sln.DotSettings.user
