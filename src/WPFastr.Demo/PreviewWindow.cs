@@ -1,10 +1,12 @@
 using System.Windows;
+using System.Windows.Input;
 
 namespace Olicode.WPFastr.Demo;
 
 internal sealed class PreviewWindow : Window
 {
     private readonly BrowserPreview preview;
+    private bool escapePressed;
 
     internal PreviewWindow(PreviewKind kind)
     {
@@ -28,5 +30,33 @@ internal sealed class PreviewWindow : Window
     {
         preview.StopLoading();
         base.OnClosed(e);
+    }
+
+    protected override void OnPreviewKeyDown(KeyEventArgs e)
+    {
+        base.OnPreviewKeyDown(e);
+        if (e.Key != Key.Escape)
+        {
+            escapePressed = false;
+            return;
+        }
+
+        e.Handled = true;
+        if (e.IsRepeat)
+            return;
+
+        if (escapePressed)
+            Close();
+        else
+        {
+            preview.FocusFolders(selectFirst: true);
+            escapePressed = true;
+        }
+    }
+
+    protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
+    {
+        escapePressed = false;
+        base.OnPreviewMouseDown(e);
     }
 }

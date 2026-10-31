@@ -98,7 +98,7 @@
                         Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                         BorderThickness="0,0,1,0">
-                    <ListBox ItemsSource="{Binding Folders}"
+                    <ListBox x:Name="FolderList" ItemsSource="{Binding Folders}"
                              SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
                              Style="{StaticResource FolderListStyle}" />
                 </Border>
@@ -152,7 +152,7 @@
                         Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                         BorderThickness="0,0,1,0">
-                    <ListBox ItemsSource="{Binding Folders}"
+                    <ListBox x:Name="FolderList" ItemsSource="{Binding Folders}"
                              SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
                              Style="{StaticResource FolderListStyle}" />
                 </Border>
@@ -209,7 +209,7 @@
                         Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                         BorderThickness="0,0,1,0">
-                    <ListBox ItemsSource="{Binding Folders}"
+                    <ListBox x:Name="FolderList" ItemsSource="{Binding Folders}"
                              SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
                              Style="{StaticResource FolderListStyle}" />
                 </Border>
