@@ -4,6 +4,8 @@
     <Color x:Key="VirtualizedColor">#61A6AF</Color>
     <Color x:Key="BufferedColor">#75A387</Color>
     <Color x:Key="BufferedHighlightColor">#34D77A</Color>
+    <Color x:Key="ResponsivenessStartColor">HotPink</Color>
+    <Color x:Key="ResponsivenessEndColor">SlateBlue</Color>
 
     <SolidColorBrush x:Key="StandardBrush" Color="{StaticResource StandardColor}" />
     <SolidColorBrush x:Key="VirtualizedBrush" Color="{StaticResource VirtualizedColor}" />

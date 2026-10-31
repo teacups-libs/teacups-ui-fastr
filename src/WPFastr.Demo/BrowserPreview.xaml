@@ -87,6 +87,44 @@
             </Border>
         </DataTemplate>
 
+        <DataTemplate x:Key="ResponsivenessIndicator">
+            <Ellipse Width="140"
+                     Height="140"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     RenderTransformOrigin="0.5,0.5">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{StaticResource ResponsivenessStartColor}" />
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <ScaleTransform ScaleX="0.72" ScaleY="0.72" />
+                </Ellipse.RenderTransform>
+                <Ellipse.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever">
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                 From="0.72"
+                                                 To="1.42"
+                                                 Duration="0:0:1.6"
+                                                 AutoReverse="True" />
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                 From="0.72"
+                                                 To="1.42"
+                                                 Duration="0:0:1.6"
+                                                 AutoReverse="True" />
+                                <ColorAnimation Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                From="{StaticResource ResponsivenessStartColor}"
+                                                To="{StaticResource ResponsivenessEndColor}"
+                                                Duration="0:0:1.6"
+                                                AutoReverse="True" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Ellipse.Triggers>
+            </Ellipse>
+        </DataTemplate>
+
         <DataTemplate x:Key="StandardBrowserTemplate">
             <Grid Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
                 <Grid.ColumnDefinitions>
@@ -127,16 +165,22 @@
                         </Grid>
                     </Border>
 
-                    <ListBox ItemsSource="{Binding CurrentFiles}"
-                             behaviors:ItemsControlScroll.ResetOnItemsReset="True"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Padding="12"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto"
-                             ItemsPanel="{StaticResource FileItemsPanel}"
-                             ItemContainerStyle="{StaticResource FileItemContainerStyle}"
-                             ItemTemplate="{StaticResource FileItemTemplate}" />
+                    <Grid ClipToBounds="True">
+                        <ListBox ItemsSource="{Binding CurrentFiles}"
+                                 behaviors:ItemsControlScroll.ResetOnItemsReset="True"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Padding="12"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ItemsPanel="{StaticResource FileItemsPanel}"
+                                 ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                                 ItemTemplate="{StaticResource FileItemTemplate}" />
+                        <ContentPresenter Content="{Binding}"
+                                          ContentTemplate="{StaticResource ResponsivenessIndicator}"
+                                          IsHitTestVisible="False"
+                                          Focusable="False" />
+                    </Grid>
                 </DockPanel>
             </Grid>
         </DataTemplate>
@@ -181,19 +225,25 @@
                         </Grid>
                     </Border>
 
-                    <ListBox ItemsSource="{Binding CurrentFiles}"
-                             behaviors:ItemsControlScroll.ResetOnItemsReset="True"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Padding="12"
-                             ScrollViewer.CanContentScroll="True"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto"
-                             VirtualizingPanel.IsVirtualizing="True"
-                             VirtualizingPanel.VirtualizationMode="Recycling"
-                             ItemsPanel="{StaticResource VirtualizingFileItemsPanel}"
-                             ItemContainerStyle="{StaticResource FileItemContainerStyle}"
-                             ItemTemplate="{StaticResource FileItemTemplate}" />
+                    <Grid ClipToBounds="True">
+                        <ListBox ItemsSource="{Binding CurrentFiles}"
+                                 behaviors:ItemsControlScroll.ResetOnItemsReset="True"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Padding="12"
+                                 ScrollViewer.CanContentScroll="True"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 VirtualizingPanel.IsVirtualizing="True"
+                                 VirtualizingPanel.VirtualizationMode="Recycling"
+                                 ItemsPanel="{StaticResource VirtualizingFileItemsPanel}"
+                                 ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                                 ItemTemplate="{StaticResource FileItemTemplate}" />
+                        <ContentPresenter Content="{Binding}"
+                                          ContentTemplate="{StaticResource ResponsivenessIndicator}"
+                                          IsHitTestVisible="False"
+                                          Focusable="False" />
+                    </Grid>
                 </DockPanel>
             </Grid>
         </DataTemplate>
@@ -238,16 +288,22 @@
                         </Grid>
                     </Border>
 
-                    <ListBox behaviors:BufferedItems.Source="{Binding CurrentFiles}"
-                             behaviors:ItemsControlScroll.ResetOnItemsReset="True"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Padding="12"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto"
-                             ItemsPanel="{StaticResource FileItemsPanel}"
-                             ItemContainerStyle="{StaticResource FileItemContainerStyle}"
-                             ItemTemplate="{StaticResource FileItemTemplate}" />
+                    <Grid ClipToBounds="True">
+                        <ListBox behaviors:BufferedItems.Source="{Binding CurrentFiles}"
+                                 behaviors:ItemsControlScroll.ResetOnItemsReset="True"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Padding="12"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ItemsPanel="{StaticResource FileItemsPanel}"
+                                 ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                                 ItemTemplate="{StaticResource FileItemTemplate}" />
+                        <ContentPresenter Content="{Binding}"
+                                          ContentTemplate="{StaticResource ResponsivenessIndicator}"
+                                          IsHitTestVisible="False"
+                                          Focusable="False" />
+                    </Grid>
                 </DockPanel>
             </Grid>
         </DataTemplate>
