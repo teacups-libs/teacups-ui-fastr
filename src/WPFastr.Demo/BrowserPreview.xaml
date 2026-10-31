@@ -253,58 +253,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <Grid Margin="16">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <ContentPresenter x:Name="BrowserContent"
-                          Grid.Column="0"
-                          Content="{Binding}" />
-
-        <Grid Grid.Column="0"
-              Width="220"
-              Height="220"
-              Margin="0,0,28,28"
-              HorizontalAlignment="Right"
-              VerticalAlignment="Bottom"
-              IsHitTestVisible="False">
-            <Ellipse Width="140"
-                     Height="140"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     RenderTransformOrigin="0.5,0.5">
-                <Ellipse.Fill>
-                    <SolidColorBrush Color="HotPink" />
-                </Ellipse.Fill>
-                <Ellipse.RenderTransform>
-                    <ScaleTransform ScaleX="0.72" ScaleY="0.72" />
-                </Ellipse.RenderTransform>
-                <Ellipse.Triggers>
-                    <EventTrigger RoutedEvent="Loaded">
-                        <BeginStoryboard>
-                            <Storyboard RepeatBehavior="Forever">
-                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
-                                                 From="0.72"
-                                                 To="1.42"
-                                                 Duration="0:0:1.6"
-                                                 AutoReverse="True" />
-                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                                 From="0.72"
-                                                 To="1.42"
-                                                 Duration="0:0:1.6"
-                                                 AutoReverse="True" />
-                                <ColorAnimation Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
-                                                From="HotPink"
-                                                To="SlateBlue"
-                                                Duration="0:0:1.6"
-                                                AutoReverse="True" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Ellipse.Triggers>
-            </Ellipse>
-        </Grid>
-    </Grid>
+    <ContentPresenter x:Name="BrowserContent"
+                      Margin="16"
+                      Content="{Binding}" />
 </UserControl>
