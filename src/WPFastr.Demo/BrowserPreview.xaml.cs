@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Olicode.WPFastr.Demo;
 
@@ -35,6 +36,25 @@ public partial class BrowserPreview : UserControl
     {
         Loaded -= OnLoaded;
         browser.SelectedFolder = browser.Folders[0];
+        Dispatcher.InvokeAsync(() => FocusFolders(), DispatcherPriority.Input);
+    }
+
+    internal void FocusFolders(bool selectFirst = false)
+    {
+        if (!IsLoaded)
+            return;
+
+        BrowserContent.ApplyTemplate();
+        var folders = (ListBox)BrowserContent.ContentTemplate.FindName("FolderList", BrowserContent);
+        if (selectFirst)
+            folders.SelectedIndex = 0;
+
+        folders.ScrollIntoView(folders.SelectedItem);
+        folders.UpdateLayout();
+        if (folders.ItemContainerGenerator.ContainerFromItem(folders.SelectedItem) is ListBoxItem item)
+            item.Focus();
+        else
+            folders.Focus();
     }
 
     internal void StopLoading() => browser.StopLoading();
