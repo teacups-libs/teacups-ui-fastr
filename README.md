@@ -2,7 +2,18 @@
 
 WPFastr provides small WPF helpers for displaying collections without blocking the UI while large item sets are replaced.
 
-It targets .NET 6 for Windows and can attach to any WPF `ItemsControl`.
+It targets .NET Framework 4.5 and .NET 10 for Windows and can attach to any WPF `ItemsControl`. The .NET Framework target supports older WPF applications; .NET Framework 4.5 itself is out of support. WPF APIs require Windows and cannot target .NET Standard.
+
+## Build and run
+
+Use Windows and the .NET 10 SDK. Building the legacy library target also requires .NET Framework 4.5 reference assemblies (restored automatically by the SDK when unavailable).
+
+```powershell
+dotnet build WPFastr.slnx --configuration Release -m:1
+dotnet run --project src/WPFastr.Demo
+```
+
+The demo runs on .NET 10. The library package includes both framework targets.
 
 ## Install
 

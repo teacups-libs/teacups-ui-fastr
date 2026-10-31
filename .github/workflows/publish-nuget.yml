@@ -25,16 +25,16 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 10.0.x
 
       - name: Restore
         run: dotnet restore src/WPFastr/WPFastr.csproj
 
       - name: Build
-        run: dotnet build src/WPFastr/WPFastr.csproj --configuration Release --no-restore -p:GeneratePackageOnBuild=false -p:Version=1.0.${{ github.run_number }}
+        run: dotnet build src/WPFastr/WPFastr.csproj --configuration Release --no-restore -m:1 -p:GeneratePackageOnBuild=false -p:Version=1.0.${{ github.run_number }}
 
       - name: Pack
-        run: dotnet pack src/WPFastr/WPFastr.csproj --configuration Release --no-build --no-restore --output publish -p:Version=1.0.${{ github.run_number }}
+        run: dotnet pack src/WPFastr/WPFastr.csproj --configuration Release --no-build --no-restore -m:1 --output publish -p:Version=1.0.${{ github.run_number }}
 
       - name: Retain package artifact
         uses: actions/upload-artifact@v4
