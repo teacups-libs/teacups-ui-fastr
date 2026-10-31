@@ -17,7 +17,7 @@ internal sealed class PreviewWindow : Window
             PreviewKind.Buffered => "BufferedItems — WPFastr Preview",
             _ => throw new ArgumentOutOfRangeException(nameof(kind))
         };
-        Width = 1120;
+        Width = 1200;
         Height = 720;
         MinWidth = 820;
         MinHeight = 480;
