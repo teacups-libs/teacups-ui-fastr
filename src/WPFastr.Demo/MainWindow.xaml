@@ -64,41 +64,6 @@
 
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
             <Button Style="{StaticResource PreviewButtonStyle}"
-                    Click="OpenBufferedPreview"
-                    AutomationProperties.Name="Open WPFastr BufferedItems preview">
-                <Button.BorderBrush>
-                    <SolidColorBrush Color="{StaticResource BufferedColor}" />
-                </Button.BorderBrush>
-                <Button.Triggers>
-                    <EventTrigger RoutedEvent="Loaded">
-                        <BeginStoryboard>
-                            <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-                                <ColorAnimation Storyboard.TargetProperty="(Control.BorderBrush).(SolidColorBrush.Color)"
-                                                From="{StaticResource BufferedColor}"
-                                                To="{StaticResource BufferedHighlightColor}"
-                                                Duration="0:0:1.6" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Button.Triggers>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Border Background="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=Button}}" CornerRadius="5,0,0,5" />
-                    <StackPanel Grid.Column="1" Margin="18,16">
-                        <TextBlock Text="WPFastr BufferedItems" FontSize="21" FontWeight="SemiBold" />
-                        <TextBlock Text="A ListBox using buffered collection replacement."
-                                   Margin="0,6,0,0" TextWrapping="Wrap"
-                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                    </StackPanel>
-                    <TextBlock Grid.Column="2" Text="&#x2192;" Margin="0,0,20,0" FontSize="24" VerticalAlignment="Center" />
-                </Grid>
-            </Button>
-
-            <Button Style="{StaticResource PreviewButtonStyle}"
                     BorderBrush="{StaticResource StandardBrush}"
                     Click="OpenStandardPreview"
                     AutomationProperties.Name="Open Standard ListBox preview">
@@ -133,6 +98,41 @@
                     <StackPanel Grid.Column="1" Margin="18,16">
                         <TextBlock Text="VirtualizingWrapPanel" FontSize="21" FontWeight="SemiBold" />
                         <TextBlock Text="A ListBox that virtualizes its wrapped items."
+                                   Margin="0,6,0,0" TextWrapping="Wrap"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="2" Text="&#x2192;" Margin="0,0,20,0" FontSize="24" VerticalAlignment="Center" />
+                </Grid>
+            </Button>
+
+            <Button Style="{StaticResource PreviewButtonStyle}"
+                    Click="OpenBufferedPreview"
+                    AutomationProperties.Name="Open WPFastr BufferedItems preview">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="{StaticResource BufferedColor}" />
+                </Button.BorderBrush>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                                <ColorAnimation Storyboard.TargetProperty="(Control.BorderBrush).(SolidColorBrush.Color)"
+                                                From="{StaticResource BufferedColor}"
+                                                To="{StaticResource BufferedHighlightColor}"
+                                                Duration="0:0:1.6" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=Button}}" CornerRadius="5,0,0,5" />
+                    <StackPanel Grid.Column="1" Margin="18,16">
+                        <TextBlock Text="WPFastr BufferedItems" FontSize="21" FontWeight="SemiBold" />
+                        <TextBlock Text="A ListBox using buffered collection replacement."
                                    Margin="0,6,0,0" TextWrapping="Wrap"
                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                     </StackPanel>
