@@ -4,6 +4,8 @@ namespace Olicode.WPFastr.Demo;
 
 internal sealed class PreviewWindow : Window
 {
+    private readonly BrowserPreview preview;
+
     internal PreviewWindow(PreviewKind kind)
     {
         Title = kind switch
@@ -18,6 +20,13 @@ internal sealed class PreviewWindow : Window
         MinWidth = 820;
         MinHeight = 480;
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
-        Content = new BrowserPreview(kind);
+        preview = new BrowserPreview(kind);
+        Content = preview;
+    }
+
+    protected override void OnClosed(EventArgs e)
+    {
+        preview.StopLoading();
+        base.OnClosed(e);
     }
 }

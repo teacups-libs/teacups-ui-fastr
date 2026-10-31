@@ -36,4 +36,6 @@ public partial class BrowserPreview : UserControl
         Loaded -= OnLoaded;
         browser.SelectedFolder = browser.Folders[0];
     }
+
+    internal void StopLoading() => browser.StopLoading();
 }
