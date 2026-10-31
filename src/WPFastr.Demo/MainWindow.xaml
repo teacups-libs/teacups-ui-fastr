@@ -12,7 +12,7 @@
         MinWidth="820"
         Width="1120">
     <Window.Resources>
-        <Style x:Key="FolderListStyle" TargetType="ListBox">
+        <Style x:Key="FolderListStyle" TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Padding" Value="8" />
@@ -27,7 +27,7 @@
             <vwp:VirtualizingWrapPanel />
         </ItemsPanelTemplate>
 
-        <Style x:Key="FileItemContainerStyle" TargetType="ListBoxItem">
+        <Style x:Key="FileItemContainerStyle" TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
             <Setter Property="Width" Value="200" />
             <Setter Property="Height" Value="180" />
             <Setter Property="Margin" Value="4" />
@@ -37,8 +37,8 @@
         </Style>
 
         <DataTemplate x:Key="FileItemTemplate">
-            <Border Background="White"
-                    BorderBrush="#D5DCE5"
+            <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                     BorderThickness="1"
                     CornerRadius="6"
                     Padding="10">
@@ -50,23 +50,23 @@
                     </Grid.RowDefinitions>
 
                     <Border Height="99"
-                            Background="#E8F1FF"
-                            BorderBrush="#BCD3F5"
+                            Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                             BorderThickness="1"
                             CornerRadius="4">
                         <Grid>
                             <Image Source="{Binding PreviewImageUrl}"
                                    Stretch="UniformToFill" />
 
-                            <Border Background="#DDEBFF"
-                                    BorderBrush="#BCD3F5"
+                            <Border Background="{DynamicResource SolidBackgroundFillColorSecondaryBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                     BorderThickness="0,0,1,1"
                                     CornerRadius="4,0,4,0"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     Padding="6,3">
                                 <TextBlock Text="{Binding Extension}"
-                                           Foreground="#1F4D8F"
+                                           Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
                                            FontSize="11"
                                            FontWeight="SemiBold" />
                             </Border>
@@ -83,12 +83,12 @@
                     <StackPanel Grid.Row="2"
                                 Orientation="Horizontal">
                         <TextBlock Text="{Binding SizeText}"
-                                   Foreground="#6B7280"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                    FontSize="12" />
                         <TextBlock Text="  "
                                    FontSize="12" />
                         <TextBlock Text="{Binding ModifiedText}"
-                                   Foreground="#6B7280"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                    FontSize="12" />
                     </StackPanel>
                 </Grid>
@@ -97,20 +97,20 @@
     </Window.Resources>
 
     <Grid>
-        <TabControl Background="#F5F7FA"
+        <TabControl Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
                     BorderThickness="0"
                     Padding="0">
             <TabItem Header="WPFastr BufferedItems"
                      DataContext="{Binding BufferedBrowser}">
-                <Grid Background="#F5F7FA">
+                <Grid Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="220" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="0"
-                            Background="White"
-                            BorderBrush="#D5DCE5"
+                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                             BorderThickness="0,0,1,0">
                         <ListBox ItemsSource="{Binding Folders}"
                                  SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
@@ -119,8 +119,8 @@
 
                     <DockPanel Grid.Column="1">
                         <Border DockPanel.Dock="Top"
-                                Background="White"
-                                BorderBrush="#D5DCE5"
+                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                 BorderThickness="0,0,0,1"
                                 Padding="16,12">
                             <Grid>
@@ -136,7 +136,7 @@
 
                                 <TextBlock Grid.Column="1"
                                            Text="{Binding StatusText}"
-                                           Foreground="#4B5563"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                            VerticalAlignment="Center" />
                             </Grid>
                         </Border>
@@ -157,15 +157,15 @@
 
             <TabItem Header="Standard ListBox"
                      DataContext="{Binding StandardBrowser}">
-                <Grid Background="#F5F7FA">
+                <Grid Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="220" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="0"
-                            Background="White"
-                            BorderBrush="#D5DCE5"
+                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                             BorderThickness="0,0,1,0">
                         <ListBox ItemsSource="{Binding Folders}"
                                  SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
@@ -174,8 +174,8 @@
 
                     <DockPanel Grid.Column="1">
                         <Border DockPanel.Dock="Top"
-                                Background="White"
-                                BorderBrush="#D5DCE5"
+                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                 BorderThickness="0,0,0,1"
                                 Padding="16,12">
                             <Grid>
@@ -191,7 +191,7 @@
 
                                 <TextBlock Grid.Column="1"
                                            Text="{Binding StatusText}"
-                                           Foreground="#4B5563"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                            VerticalAlignment="Center" />
                             </Grid>
                         </Border>
@@ -212,15 +212,15 @@
 
             <TabItem Header="Standard ListBox + VirtualizingWrapPanel"
                      DataContext="{Binding VirtualizedBrowser}">
-                <Grid Background="#F5F7FA">
+                <Grid Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="220" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="0"
-                            Background="White"
-                            BorderBrush="#D5DCE5"
+                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                             BorderThickness="0,0,1,0">
                         <ListBox ItemsSource="{Binding Folders}"
                                  SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
@@ -229,8 +229,8 @@
 
                     <DockPanel Grid.Column="1">
                         <Border DockPanel.Dock="Top"
-                                Background="White"
-                                BorderBrush="#D5DCE5"
+                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                 BorderThickness="0,0,0,1"
                                 Padding="16,12">
                             <Grid>
@@ -246,7 +246,7 @@
 
                                 <TextBlock Grid.Column="1"
                                            Text="{Binding StatusText}"
-                                           Foreground="#4B5563"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                            VerticalAlignment="Center" />
                             </Grid>
                         </Border>
