@@ -205,6 +205,60 @@
                 </DockPanel>
             </Grid>
         </DataTemplate>
+
+        <DataTemplate x:Key="BufferedBrowserTemplate">
+            <Grid Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="0,0,1,0">
+                    <ListBox ItemsSource="{Binding Folders}"
+                             SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
+                             Style="{StaticResource FolderListStyle}" />
+                </Border>
+
+                <DockPanel Grid.Column="1">
+                    <Border DockPanel.Dock="Top"
+                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="0,0,0,1"
+                            Padding="16,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding CurrentFolder}"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       VerticalAlignment="Center" />
+
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding StatusText}"
+                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                       VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <ListBox behaviors:BufferedItems.Source="{Binding CurrentFiles}"
+                             behaviors:ItemsControlScroll.ResetOnItemsReset="True"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Padding="12"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             ItemsPanel="{StaticResource FileItemsPanel}"
+                             ItemContainerStyle="{StaticResource FileItemContainerStyle}"
+                             ItemTemplate="{StaticResource FileItemTemplate}" />
+                </DockPanel>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -237,57 +291,14 @@
 
             <TabItem Header="WPFastr BufferedItems"
                      DataContext="{Binding BufferedBrowser}">
-                <Grid Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="220" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                <ContentPresenter Content="{Binding}"
+                                  ContentTemplate="{StaticResource BufferedBrowserTemplate}" />
+            </TabItem>
 
-                    <Border Grid.Column="0"
-                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                            BorderThickness="0,0,1,0">
-                        <ListBox ItemsSource="{Binding Folders}"
-                                 SelectedItem="{Binding SelectedFolder, Mode=TwoWay}"
-                                 Style="{StaticResource FolderListStyle}" />
-                    </Border>
-
-                    <DockPanel Grid.Column="1">
-                        <Border DockPanel.Dock="Top"
-                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                                BorderThickness="0,0,0,1"
-                                Padding="16,12">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock Text="{Binding CurrentFolder}"
-                                           FontSize="18"
-                                           FontWeight="SemiBold"
-                                           VerticalAlignment="Center" />
-
-                                <TextBlock Grid.Column="1"
-                                           Text="{Binding StatusText}"
-                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                           VerticalAlignment="Center" />
-                            </Grid>
-                        </Border>
-
-                        <ListBox behaviors:BufferedItems.Source="{Binding CurrentFiles}"
-                                 behaviors:ItemsControlScroll.ResetOnItemsReset="True"
-                                 Background="Transparent"
-                                 BorderThickness="0"
-                                 Padding="12"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                 ItemsPanel="{StaticResource FileItemsPanel}"
-                                 ItemContainerStyle="{StaticResource FileItemContainerStyle}"
-                                 ItemTemplate="{StaticResource FileItemTemplate}" />
-                    </DockPanel>
-                </Grid>
+            <TabItem Header="WPFastr BufferedItems (2)"
+                     DataContext="{Binding SecondBufferedBrowser}">
+                <ContentPresenter Content="{Binding}"
+                                  ContentTemplate="{StaticResource BufferedBrowserTemplate}" />
             </TabItem>
         </TabControl>
 
