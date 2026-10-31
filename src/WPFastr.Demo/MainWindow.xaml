@@ -12,6 +12,29 @@
         MinWidth="820"
         Width="1120">
     <Window.Resources>
+        <SolidColorBrush x:Key="StandardTabBrush" Color="#C57979" />
+        <SolidColorBrush x:Key="VirtualizedTabBrush" Color="#61A6AF" />
+        <SolidColorBrush x:Key="BufferedTabBrush" Color="#75A387" />
+
+        <Style x:Key="DemoTabItemStyle" TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="6"
+                                       Height="16"
+                                       Margin="0,0,8,0"
+                                       VerticalAlignment="Center"
+                                       Fill="{Binding Tag, RelativeSource={RelativeSource AncestorType=TabItem}}" />
+                            <TextBlock Text="{Binding}"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="FolderListStyle" TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="FontSize" Value="14" />
@@ -270,38 +293,45 @@
         <TabControl Grid.Column="0"
                     Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
                     BorderThickness="0"
+                    ItemContainerStyle="{StaticResource DemoTabItemStyle}"
                     Padding="0">
-            <TabItem Header="Standard ListBox"
+            <TabItem Header="Standard Listbox #1"
+                     Tag="{StaticResource StandardTabBrush}"
                      DataContext="{Binding StandardBrowser}">
                 <ContentPresenter Content="{Binding}"
                                   ContentTemplate="{StaticResource StandardBrowserTemplate}" />
             </TabItem>
 
-            <TabItem Header="Standard ListBox (2)"
+            <TabItem Header="Standart Listbox #2"
+                     Tag="{StaticResource StandardTabBrush}"
                      DataContext="{Binding SecondStandardBrowser}">
                 <ContentPresenter Content="{Binding}"
                                   ContentTemplate="{StaticResource StandardBrowserTemplate}" />
             </TabItem>
 
-            <TabItem Header="Standard ListBox + VirtualizingWrapPanel"
+            <TabItem Header="Standard Listbox + VirtualizingWrapPanel #1"
+                     Tag="{StaticResource VirtualizedTabBrush}"
                      DataContext="{Binding VirtualizedBrowser}">
                 <ContentPresenter Content="{Binding}"
                                   ContentTemplate="{StaticResource VirtualizedBrowserTemplate}" />
             </TabItem>
 
-            <TabItem Header="Standard ListBox + VirtualizingWrapPanel (2)"
+            <TabItem Header="Standard Listbox + VirtualizingWrapPanel #2"
+                     Tag="{StaticResource VirtualizedTabBrush}"
                      DataContext="{Binding SecondVirtualizedBrowser}">
                 <ContentPresenter Content="{Binding}"
                                   ContentTemplate="{StaticResource VirtualizedBrowserTemplate}" />
             </TabItem>
 
-            <TabItem Header="WPFastr BufferedItems"
+            <TabItem Header="WPFastr BufferedItems #1"
+                     Tag="{StaticResource BufferedTabBrush}"
                      DataContext="{Binding BufferedBrowser}">
                 <ContentPresenter Content="{Binding}"
                                   ContentTemplate="{StaticResource BufferedBrowserTemplate}" />
             </TabItem>
 
-            <TabItem Header="WPFastr BufferedItems (2)"
+            <TabItem Header="WPFastr BufferedItems #2"
+                     Tag="{StaticResource BufferedTabBrush}"
                      DataContext="{Binding SecondBufferedBrowser}">
                 <ContentPresenter Content="{Binding}"
                                   ContentTemplate="{StaticResource BufferedBrowserTemplate}" />
