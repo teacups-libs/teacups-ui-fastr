@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
 using Olicode.WPFastr.Threading;
 
 namespace Olicode.WPFastr.Collections;
@@ -46,7 +47,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
             {
                 if (IsCurrent(updateVersion))
                     Add(item);
-            }, IDispatcherService.BackgroundPriority);
+            }, DispatcherPriority.Background);
         }
     }
 
@@ -90,7 +91,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
 
                 RemoveAt(0);
                 removedItem = true;
-            }, IDispatcherService.BackgroundPriority);
+            }, DispatcherPriority.Background);
 
             if (!removedItem)
                 break;
@@ -105,7 +106,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
         {
             if (IsCurrent(updateVersion))
                 count = Count;
-        }, IDispatcherService.BackgroundPriority);
+        }, DispatcherPriority.Background);
 
         return count;
     }
@@ -122,7 +123,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
         {
             if (IsCurrent(updateVersion) && Count > 0)
                 RemoveAt(0);
-        }, IDispatcherService.BackgroundPriority);
+        }, DispatcherPriority.Background);
     }
 
     private IDisposable BeginBusyScope()

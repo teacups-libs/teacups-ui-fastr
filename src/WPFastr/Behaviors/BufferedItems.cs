@@ -232,14 +232,14 @@ public static class BufferedItems
 
         private void ClearDetachedItemsAsync(ObservableCollection<object?> items, long clearVersion)
         {
-            itemsControl.Dispatcher.BeginInvoke(() =>
+            itemsControl.Dispatcher.BeginInvoke(new Action(() =>
             {
                 if (clearVersion == detachedClearVersion && items.Count > 0)
                 {
                     items.RemoveAt(0);
                     ClearDetachedItemsAsync(items, clearVersion);
                 }
-            }, DispatcherPriority.ApplicationIdle);
+            }), DispatcherPriority.ApplicationIdle);
         }
 
         private bool ContainsVisibleItem(IList? items)

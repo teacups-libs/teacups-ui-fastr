@@ -162,13 +162,13 @@ public static class ItemsControlScroll
         {
             var version = ++resetVersion;
 
-            itemsControl.Dispatcher.BeginInvoke(() =>
+            itemsControl.Dispatcher.BeginInvoke(new Action(() =>
             {
                 if (!enabled || version != resetVersion)
                     return;
 
                 FindVisualChild<ScrollViewer>(itemsControl)?.ScrollToTop();
-            }, DispatcherPriority.ContextIdle);
+            }), DispatcherPriority.ContextIdle);
         }
 
         private static T? FindVisualChild<T>(DependencyObject parent)
