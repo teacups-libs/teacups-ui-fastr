@@ -19,6 +19,7 @@ public partial class App : Application
         preview.Closed += OnPreviewClosed;
         MainWindow = preview;
         preview.Show();
+        launcher.Closed -= OnLauncherClosed;
         launcher.Close();
     }
 
@@ -32,12 +33,9 @@ public partial class App : Application
 
     private void OnLauncherClosed(object? sender, EventArgs e)
     {
-        // Replacing the launcher must not end the application.
-        if (ReferenceEquals(MainWindow, sender))
-        {
-            isShuttingDown = true;
-            Shutdown();
-        }
+        // WPF clears MainWindow before Closed; transitions detach this handler instead.
+        isShuttingDown = true;
+        Shutdown();
     }
 
     private void OnPreviewClosed(object? sender, EventArgs e)
