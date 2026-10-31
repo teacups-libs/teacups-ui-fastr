@@ -45,6 +45,11 @@ public abstract class BrowserViewModelBase : INotifyPropertyChanged
         private set => SetField(ref statusText, value);
     }
 
+    public virtual void StopLoading()
+    {
+        Interlocked.Increment(ref currentUpdateVersion);
+    }
+
     protected abstract Task ReplaceFilesAsync(IReadOnlyList<FileItem> files, long updateVersion);
 
     protected abstract bool IsCurrent(long updateVersion);

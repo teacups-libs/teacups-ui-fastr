@@ -12,6 +12,12 @@ public sealed class BufferedBrowserViewModel : BrowserViewModelBase
 
     public DispatcherCollection<FileItem> CurrentFiles { get; }
 
+    public override void StopLoading()
+    {
+        base.StopLoading();
+        CurrentFiles.BeginUpdate();
+    }
+
     protected override async Task ReplaceFilesAsync(IReadOnlyList<FileItem> files, long updateVersion)
     {
         if (!IsLatest(updateVersion))
