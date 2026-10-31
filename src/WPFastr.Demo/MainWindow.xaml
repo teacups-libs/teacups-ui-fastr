@@ -11,9 +11,36 @@
         <Style x:Key="PreviewButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="Padding" Value="20,16" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
             <Setter Property="MinHeight" Value="104" />
             <Setter Property="Margin" Value="0,0,0,12" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
 
@@ -37,6 +64,42 @@
 
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
             <Button Style="{StaticResource PreviewButtonStyle}"
+                    Click="OpenBufferedPreview"
+                    AutomationProperties.Name="Open WPFastr BufferedItems preview">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="{StaticResource BufferedColor}" />
+                </Button.BorderBrush>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                                <ColorAnimation Storyboard.TargetProperty="(Control.BorderBrush).(SolidColorBrush.Color)"
+                                                From="{StaticResource BufferedColor}"
+                                                To="{StaticResource BufferedHighlightColor}"
+                                                Duration="0:0:1.6" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=Button}}" CornerRadius="5,0,0,5" />
+                    <StackPanel Grid.Column="1" Margin="18,16">
+                        <TextBlock Text="WPFastr BufferedItems" FontSize="21" FontWeight="SemiBold" />
+                        <TextBlock Text="A ListBox using buffered collection replacement."
+                                   Margin="0,6,0,0" TextWrapping="Wrap"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="2" Text="&#x2192;" Margin="0,0,20,0" FontSize="24" VerticalAlignment="Center" />
+                </Grid>
+            </Button>
+
+            <Button Style="{StaticResource PreviewButtonStyle}"
+                    BorderBrush="{StaticResource StandardBrush}"
                     Click="OpenStandardPreview"
                     AutomationProperties.Name="Open Standard ListBox preview">
                 <Grid>
@@ -45,18 +108,19 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Rectangle Fill="#C57979" />
-                    <StackPanel Grid.Column="1" Margin="18,0">
+                    <Border Background="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=Button}}" CornerRadius="5,0,0,5" />
+                    <StackPanel Grid.Column="1" Margin="18,16">
                         <TextBlock Text="Standard ListBox" FontSize="21" FontWeight="SemiBold" />
                         <TextBlock Text="A regular ListBox with a WrapPanel."
                                    Margin="0,6,0,0" TextWrapping="Wrap"
                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                     </StackPanel>
-                    <TextBlock Grid.Column="2" Text="&#x2192;" FontSize="24" VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="2" Text="&#x2192;" Margin="0,0,20,0" FontSize="24" VerticalAlignment="Center" />
                 </Grid>
             </Button>
 
             <Button Style="{StaticResource PreviewButtonStyle}"
+                    BorderBrush="{StaticResource VirtualizedBrush}"
                     Click="OpenVirtualizedPreview"
                     AutomationProperties.Name="Open VirtualizingWrapPanel preview">
                 <Grid>
@@ -65,34 +129,14 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Rectangle Fill="#61A6AF" />
-                    <StackPanel Grid.Column="1" Margin="18,0">
+                    <Border Background="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=Button}}" CornerRadius="5,0,0,5" />
+                    <StackPanel Grid.Column="1" Margin="18,16">
                         <TextBlock Text="VirtualizingWrapPanel" FontSize="21" FontWeight="SemiBold" />
                         <TextBlock Text="A ListBox that virtualizes its wrapped items."
                                    Margin="0,6,0,0" TextWrapping="Wrap"
                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                     </StackPanel>
-                    <TextBlock Grid.Column="2" Text="&#x2192;" FontSize="24" VerticalAlignment="Center" />
-                </Grid>
-            </Button>
-
-            <Button Style="{StaticResource PreviewButtonStyle}"
-                    Click="OpenBufferedPreview"
-                    AutomationProperties.Name="Open WPFastr BufferedItems preview">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Rectangle Fill="#75A387" />
-                    <StackPanel Grid.Column="1" Margin="18,0">
-                        <TextBlock Text="WPFastr BufferedItems" FontSize="21" FontWeight="SemiBold" />
-                        <TextBlock Text="A ListBox using buffered collection replacement."
-                                   Margin="0,6,0,0" TextWrapping="Wrap"
-                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                    </StackPanel>
-                    <TextBlock Grid.Column="2" Text="&#x2192;" FontSize="24" VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="2" Text="&#x2192;" Margin="0,0,20,0" FontSize="24" VerticalAlignment="Center" />
                 </Grid>
             </Button>
         </StackPanel>
