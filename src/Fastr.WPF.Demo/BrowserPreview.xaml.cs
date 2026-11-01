@@ -13,7 +13,7 @@ public partial class BrowserPreview : UserControl
         browser = kind switch
         {
             PreviewKind.Standard or PreviewKind.Virtualized => new StandardBrowserViewModel(),
-            PreviewKind.Buffered => new BufferedBrowserViewModel(Dispatcher),
+            PreviewKind.Buffered => new BufferedBrowserViewModel(),
             _ => throw new ArgumentOutOfRangeException(nameof(kind))
         };
 

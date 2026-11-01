@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
-using System.Windows.Threading;
-using Okisioli.Teacups.UI.Fastr.WPF.Threading;
+using Okisioli.Teacups.UI.Core;
+using DispatcherPriority = Okisioli.Teacups.UI.Core.IDispatcherService.DispatcherPriority;
 
 namespace Okisioli.Teacups.UI.Fastr.WPF.Collections;
 
@@ -47,7 +47,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
             {
                 if (IsCurrent(updateVersion))
                     Add(item);
-            }, DispatcherPriority.Background);
+            });
         }
     }
 
@@ -91,7 +91,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
 
                 RemoveAt(0);
                 removedItem = true;
-            }, DispatcherPriority.Background);
+            });
 
             if (!removedItem)
                 break;
@@ -106,7 +106,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
         {
             if (IsCurrent(updateVersion))
                 count = Count;
-        }, DispatcherPriority.Background);
+        });
 
         return count;
     }
@@ -123,7 +123,7 @@ public class DispatcherCollection<T> : ObservableCollection<T>, INotifyCollectio
         {
             if (IsCurrent(updateVersion) && Count > 0)
                 RemoveAt(0);
-        }, DispatcherPriority.Background);
+        });
     }
 
     private IDisposable BeginBusyScope()

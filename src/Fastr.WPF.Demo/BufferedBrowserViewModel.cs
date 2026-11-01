@@ -1,13 +1,15 @@
 using System.Windows.Threading;
+using Okisioli.Teacups.UI.Core.WPF;
 using Okisioli.Teacups.UI.Fastr.WPF.Collections;
 
 namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 public sealed class BufferedBrowserViewModel : BrowserViewModelBase
 {
-    public BufferedBrowserViewModel(Dispatcher dispatcher)
+    public BufferedBrowserViewModel()
     {
-        CurrentFiles = new DispatcherCollection<FileItem>(new WpfDispatcherService(dispatcher));
+        var dispatcherService = new DispatcherService(Dispatcher.CurrentDispatcher);
+        CurrentFiles = new DispatcherCollection<FileItem>(dispatcherService);
     }
 
     public DispatcherCollection<FileItem> CurrentFiles { get; }
