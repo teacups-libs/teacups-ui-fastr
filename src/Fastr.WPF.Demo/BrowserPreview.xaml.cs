@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace Olicode.WPFastr.Demo;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 public partial class BrowserPreview : UserControl
 {

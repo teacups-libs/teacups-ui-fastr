@@ -1,6 +1,6 @@
 using System.Windows.Threading;
 
-namespace Olicode.WPFastr.Threading;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Threading;
 
 public interface IDispatcherService
 {

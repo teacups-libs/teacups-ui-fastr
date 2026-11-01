@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace Olicode.WPFastr.Demo;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 public sealed class StandardBrowserViewModel : BrowserViewModelBase
 {

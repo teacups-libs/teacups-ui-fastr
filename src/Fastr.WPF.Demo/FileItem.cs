@@ -1,4 +1,4 @@
-namespace Olicode.WPFastr.Demo;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 public sealed record FileItem(
     string Name,

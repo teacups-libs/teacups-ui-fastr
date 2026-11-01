@@ -1,7 +1,7 @@
 using System.Windows.Threading;
-using Olicode.WPFastr.Collections;
+using Okisioli.Teacups.UI.Fastr.WPF.Collections;
 
-namespace Olicode.WPFastr.Demo;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 public sealed class BufferedBrowserViewModel : BrowserViewModelBase
 {

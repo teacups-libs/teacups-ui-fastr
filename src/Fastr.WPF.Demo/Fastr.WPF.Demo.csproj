@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\WPFastr\WPFastr.csproj" />
+    <ProjectReference Include="..\Fastr.WPF\Fastr.WPF.csproj" />
   </ItemGroup>
 
   <ItemGroup>

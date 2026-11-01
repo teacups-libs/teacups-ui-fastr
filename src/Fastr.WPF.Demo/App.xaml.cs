@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace Olicode.WPFastr.Demo;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 public partial class App : Application
 {

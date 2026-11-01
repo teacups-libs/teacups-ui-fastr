@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Olicode.WPFastr.Behaviors;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Behaviors;
 
 public static class ItemsControlScroll
 {
