@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Threading\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Okisioli.Teacups.UI.Core" Version="0.6.0" />
+    <PackageReference Include="Okisioli.Teacups.UI.Core" Version="0.11.1" />
   </ItemGroup>
 </Project>
