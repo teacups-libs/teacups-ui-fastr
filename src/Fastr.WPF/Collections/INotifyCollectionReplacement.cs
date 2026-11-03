@@ -1,4 +1,4 @@
-namespace Olicode.WPFastr.Collections;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Collections;
 
 public interface INotifyCollectionReplacement
 {

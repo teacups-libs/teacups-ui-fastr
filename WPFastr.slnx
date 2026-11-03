@@ -4,6 +4,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="src/WPFastr.Demo/WPFastr.Demo.csproj" />
-  <Project Path="src/WPFastr/WPFastr.csproj" />
+  <Project Path="src/Fastr.WPF.Demo/Fastr.WPF.Demo.csproj" />
+  <Project Path="src/Fastr.WPF/Fastr.WPF.csproj" />
 </Solution>

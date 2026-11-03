@@ -1,8 +1,8 @@
-<UserControl x:Class="Olicode.WPFastr.Demo.BrowserPreview"
+<UserControl x:Class="Okisioli.Teacups.UI.Fastr.WPF.Demo.BrowserPreview"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
-             xmlns:behaviors="clr-namespace:Olicode.WPFastr.Behaviors;assembly=Olicode.WPFastr">
+             xmlns:behaviors="clr-namespace:Okisioli.Teacups.UI.Fastr.WPF.Behaviors;assembly=Fastr.WPF">
     <UserControl.Resources>
         <Style x:Key="FolderListStyle" TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
             <Setter Property="BorderThickness" Value="0" />

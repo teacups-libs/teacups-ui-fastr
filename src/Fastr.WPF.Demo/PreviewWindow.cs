@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace Olicode.WPFastr.Demo;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 internal sealed class PreviewWindow : Window
 {
@@ -12,9 +12,9 @@ internal sealed class PreviewWindow : Window
     {
         Title = kind switch
         {
-            PreviewKind.Standard => "Standard ListBox — WPFastr Preview",
-            PreviewKind.Virtualized => "VirtualizingWrapPanel — WPFastr Preview",
-            PreviewKind.Buffered => "BufferedItems — WPFastr Preview",
+            PreviewKind.Standard => "Standard ListBox — Fastr.WPF Preview",
+            PreviewKind.Virtualized => "VirtualizingWrapPanel — Fastr.WPF Preview",
+            PreviewKind.Buffered => "BufferedItems — Fastr.WPF Preview",
             _ => throw new ArgumentOutOfRangeException(nameof(kind))
         };
         Width = 1200;

@@ -4,9 +4,9 @@ using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using Olicode.WPFastr.Collections;
+using Okisioli.Teacups.UI.Fastr.WPF.Collections;
 
-namespace Olicode.WPFastr.Behaviors;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Behaviors;
 
 public static class BufferedItems
 {

@@ -1,8 +1,8 @@
 using System.Collections.ObjectModel;
-using System.Windows.Threading;
-using Olicode.WPFastr.Threading;
+using Okisioli.Teacups.UI.Core;
+using DispatcherPriority = Okisioli.Teacups.UI.Core.IDispatcherService.DispatcherPriority;
 
-namespace Olicode.WPFastr.Collections;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Collections;
 
 // TODO move to a standalone library
 // TODO allow adjusting of priority

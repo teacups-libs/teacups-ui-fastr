@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace Olicode.WPFastr.Demo;
+namespace Okisioli.Teacups.UI.Fastr.WPF.Demo;
 
 public partial class BrowserPreview : UserControl
 {
@@ -13,7 +13,7 @@ public partial class BrowserPreview : UserControl
         browser = kind switch
         {
             PreviewKind.Standard or PreviewKind.Virtualized => new StandardBrowserViewModel(),
-            PreviewKind.Buffered => new BufferedBrowserViewModel(Dispatcher),
+            PreviewKind.Buffered => new BufferedBrowserViewModel(),
             _ => throw new ArgumentOutOfRangeException(nameof(kind))
         };
 

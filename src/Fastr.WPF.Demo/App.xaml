@@ -1,4 +1,4 @@
-﻿<Application x:Class="Olicode.WPFastr.Demo.App"
+﻿<Application x:Class="Okisioli.Teacups.UI.Fastr.WPF.Demo.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              ShutdownMode="OnExplicitShutdown"
